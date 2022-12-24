@@ -14,13 +14,16 @@ def input_adjacency_matrix(
 
     for _ in range(count_edges):
         v1, v2 = input('Input vertices v1 v2: ').split()
+
         for vertex in v1, v2:
             if vertex not in indexes:
                 vertices.append(vertex)
                 indexes[vertex] = len(vertices) - 1
+
         v1_index, v2_index = indexes[v1], indexes[v2]
         adjacency_matrix[v1_index][v2_index] += 1
         adjacency_matrix[v2_index][v1_index] += 1
+
     return adjacency_matrix
 
 
