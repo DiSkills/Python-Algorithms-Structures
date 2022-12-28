@@ -11,7 +11,7 @@ def dfs(*, vertex: str, graph: Graph, used: set[str]) -> None:
             dfs(vertex=neighbour, graph=graph, used=used)
 
 
-def get_quantity_connectivity_components(graph: Graph) -> int:
+def get_quantity_connectivity_components(*, graph: Graph) -> int:
     used: set[str] = set()
     quantity = 0
     for vertex in graph:
