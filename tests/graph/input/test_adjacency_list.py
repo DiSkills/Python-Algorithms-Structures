@@ -3,7 +3,7 @@ from src.graph.input.adjacency_list import input_adjacency_list
 
 def test_input_adjacency_list(monkeypatch) -> None:
     # A - B - C - D
-    inputs = iter(['A B', 'B C', 'C D']) 
+    inputs = iter(['A B', 'B C', 'C D'])
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
     graph = input_adjacency_list(count_edges=3)
     assert graph == {
