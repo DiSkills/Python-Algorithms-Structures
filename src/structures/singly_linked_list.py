@@ -14,6 +14,9 @@ class Node:
             return False
         return self.data == other.data
 
+    def __str__(self) -> str:
+        return str(self.data)
+
 
 class LinkedList:
     def _add_start_data(self, *, data: list[int] | None = None) -> None:
@@ -42,11 +45,7 @@ class LinkedList:
         return self._length
 
     def __repr__(self) -> str:
-        data: list[str] = []
-        node = self._head
-        while node is not None:
-            data.append(str(node.data))
-            node = node.next
+        data: list[str] = [str(node) for node in self.__iter__()]
         data.append('None')
         return ' -> '.join(data)
 
