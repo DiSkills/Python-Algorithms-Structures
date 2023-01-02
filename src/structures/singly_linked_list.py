@@ -17,16 +17,24 @@ class Node:
 
 class LinkedList:
     def __init__(self) -> None:
-        self.head: Node | None = None
-        self.tail: Node | None = None
+        self._head: Node | None = None
+        self._tail: Node | None = None
         self._length = 0
+
+    @property
+    def head(self) -> Node | None:
+        return self._head
+
+    @property
+    def tail(self) -> Node | None:
+        return self._tail
 
     def __len__(self) -> int:
         return self._length
 
     def __repr__(self) -> str:
         data: list[str] = []
-        node = self.head
+        node = self._head
         while node is not None:
             data.append(str(node.data))
             node = node.next
@@ -34,26 +42,26 @@ class LinkedList:
         return ' -> '.join(data)
 
     def __iter__(self) -> Iterator[Node]:
-        node = self.head
+        node = self._head
         while node is not None:
             yield node
             node = node.next
 
     def append_left(self, data: int) -> None:
         node = Node(data=data)
-        if self.head is None:
-            self.head = node
-            self.tail = node
+        if self._head is None:
+            self._head = node
+            self._tail = node
         else:
-            node.next = self.head
-            self.head = node
+            node.next = self._head
+            self._head = node
         self._length += 1
 
     def append(self, data: int) -> None:
         node = Node(data=data)
-        if self.head is None:
-            self.head = node
-        elif self.tail is not None:
-            self.tail.next = node
-        self.tail = node
+        if self._head is None:
+            self._head = node
+        elif self._tail is not None:
+            self._tail.next = node
+        self._tail = node
         self._length += 1
