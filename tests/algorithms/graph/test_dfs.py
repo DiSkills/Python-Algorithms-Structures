@@ -1,4 +1,4 @@
-from src.graph.dfs import get_quantity_connectivity_components
+from src.algorithms.graph.dfs import get_quantity_connectivity_components
 
 
 def test_get_quantity_connectivity_components() -> None:

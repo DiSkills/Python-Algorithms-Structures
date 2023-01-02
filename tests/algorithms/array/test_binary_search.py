@@ -1,4 +1,4 @@
-from src.array.binary_search import binary_search
+from src.algorithms.array.binary_search import binary_search
 
 
 def test_binary_search_found_element_index() -> None:
