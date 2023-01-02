@@ -60,16 +60,16 @@ def test_list_append_left() -> None:
 
     linked_list.append_left(0)
     assert len(linked_list) == 2
-
     assert linked_list.__repr__() == '0 -> 1 -> None'
+
     assert linked_list.head.data == 0
     assert linked_list.tail.data == 1
 
     # Append right
     linked_list.append(2)
     assert len(linked_list) == 3
-
     assert linked_list.__repr__() == '0 -> 1 -> 2 -> None'
+
     assert linked_list.head.data == 0
     assert linked_list.tail.data == 2
 
