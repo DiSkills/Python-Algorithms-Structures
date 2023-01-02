@@ -74,6 +74,35 @@ def test_list_append_left() -> None:
     assert linked_list.tail.data == 2
 
 
+def test_create_list_with_start_data() -> None:
+    linked_list = LinkedList(data=[1, 2, 3])
+    assert len(linked_list) == 3
+    assert linked_list.__repr__() == '1 -> 2 -> 3 -> None'
+
+    assert linked_list.head is not None
+    assert linked_list.head.data == 1
+    assert linked_list.tail is not None
+    assert linked_list.tail.data == 3
+
+    # 1 element
+    linked_list = LinkedList(data=[1])
+    assert len(linked_list) == 1
+    assert linked_list.__repr__() == '1 -> None'
+
+    assert linked_list.head is not None
+    assert linked_list.head.data == 1
+    assert linked_list.tail is not None
+    assert linked_list.tail.data == 1
+
+    # Empty data
+    linked_list = LinkedList(data=[])
+    assert len(linked_list) == 0
+    assert linked_list.__repr__() == 'None'
+
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+
 def test_list_repr() -> None:
     linked_list = LinkedList()
     assert linked_list.__repr__() == 'None'

@@ -16,10 +16,19 @@ class Node:
 
 
 class LinkedList:
-    def __init__(self) -> None:
+    def _add_start_data(self, *, data: list[int] | None = None) -> None:
+        if data is None:
+            return
+
+        for item in data:
+            self.append(item)
+
+    def __init__(self, *, data: list[int] | None = None) -> None:
         self._head: Node | None = None
         self._tail: Node | None = None
         self._length = 0
+
+        self._add_start_data(data=data)
 
     @property
     def head(self) -> Node | None:
