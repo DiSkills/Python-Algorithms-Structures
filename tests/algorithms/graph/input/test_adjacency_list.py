@@ -1,4 +1,4 @@
-from src.graph.input.adjacency_list import input_adjacency_list
+from src.algorithms.graph.input.adjacency_list import input_adjacency_list
 
 
 def test_input_adjacency_list(monkeypatch) -> None:

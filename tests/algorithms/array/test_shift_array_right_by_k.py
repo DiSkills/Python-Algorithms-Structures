@@ -1,4 +1,4 @@
-from src.array.shift_array_right_by_k import shift_array
+from src.algorithms.array.shift_array_right_by_k import shift_array
 
 
 def test_shift_the_array_to_the_right_by_less_than_its_length() -> None:

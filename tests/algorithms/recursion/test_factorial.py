@@ -1,4 +1,4 @@
-from src.recursion.factorial import factorial
+from src.algorithms.recursion.factorial import factorial
 
 
 def test_get_factorial() -> None:

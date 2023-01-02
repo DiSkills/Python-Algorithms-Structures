@@ -1,4 +1,4 @@
-from src.array.binary_search_boundaries import get_boundaries
+from src.algorithms.array.binary_search_boundaries import get_boundaries
 
 
 def test_get_boundaries_of_an_existing_element() -> None:
