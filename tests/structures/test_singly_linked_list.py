@@ -6,6 +6,13 @@ def test_node_repr() -> None:
     assert node.__repr__() == '1'
 
 
+def test_node_eq() -> None:
+    node = Node(data=1)
+    assert (node == 1) is False
+    assert (node == Node(data=2)) is False
+    assert (node == Node(data=1)) is True
+
+
 def test_list_append() -> None:
     linked_list = LinkedList()
     assert len(linked_list) == 0
@@ -38,3 +45,14 @@ def test_list_repr() -> None:
 
     linked_list.append(2)
     assert linked_list.__repr__() == '1 -> 2 -> None'
+
+
+def test_list_iter() -> None:
+    linked_list = LinkedList()
+    assert list(linked_list) == []
+
+    linked_list.append(1)
+    assert list(linked_list) == [Node(data=1)]
+
+    linked_list.append(2)
+    assert list(linked_list) == [Node(data=1), Node(data=2)]

@@ -1,3 +1,6 @@
+from typing import Iterator
+
+
 class Node:
     def __init__(self, *, data: int) -> None:
         self.data = data
@@ -5,6 +8,11 @@ class Node:
 
     def __repr__(self) -> str:
         return str(self.data)
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Node):
+            return False
+        return self.data == other.data
 
 
 class LinkedList:
@@ -24,6 +32,12 @@ class LinkedList:
             node = node.next
         data.append('None')
         return ' -> '.join(data)
+
+    def __iter__(self) -> Iterator[Node]:
+        node = self.head
+        while node is not None:
+            yield node
+            node = node.next
 
     def append(self, data: int) -> None:
         node = Node(data=data)
