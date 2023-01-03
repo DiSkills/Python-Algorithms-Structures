@@ -75,7 +75,7 @@ class LinkedList:
     def pop_front(self) -> None:
         if self._head is None:
             raise IndexError('SinglyLinkedList is empty')
-        if self._head == self._tail:
+        if self._head.next is None:
             self._tail = None
         self._head = self._head.next
         self._length -= 1
