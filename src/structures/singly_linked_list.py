@@ -57,12 +57,10 @@ class LinkedList:
 
     def push_front(self, data: int) -> None:
         node = Node(data=data)
-        if self._head is None:
-            self._head = node
+        node.next = self._head
+        self._head = node
+        if self._tail is None:
             self._tail = node
-        else:
-            node.next = self._head
-            self._head = node
         self._length += 1
 
     def push_back(self, data: int) -> None:
