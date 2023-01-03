@@ -1,6 +1,6 @@
 import pytest
 
-from src.structures.singly_linked_list import Node, LinkedList
+from src.structures.singly_linked_list import LinkedList
 
 
 def test_repr() -> None:
