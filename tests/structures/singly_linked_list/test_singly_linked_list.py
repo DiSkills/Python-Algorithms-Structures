@@ -1,3 +1,5 @@
+import pytest
+
 from src.structures.singly_linked_list import Node, LinkedList
 
 
@@ -118,3 +120,59 @@ def test_create_with_one_item_in_start_data() -> None:
     assert linked_list.head.data == 1
     assert linked_list.tail is not None
     assert linked_list.tail.data == 1
+
+
+def test_pop_front_in_empty_list() -> None:
+    linked_list = LinkedList(data=[])
+    assert len(linked_list) == 0
+    assert linked_list.__repr__() == 'None'
+
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+    with pytest.raises(IndexError, match='SinglyLinkedList is empty'):
+        linked_list.pop_front()
+
+    assert len(linked_list) == 0
+    assert linked_list.__repr__() == 'None'
+
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+
+def test_pop_front_when_head_equal_tail() -> None:
+    linked_list = LinkedList(data=[1])
+    assert len(linked_list) == 1
+    assert linked_list.__repr__() == '1 -> None'
+
+    assert linked_list.head is not None
+    assert linked_list.head.data == 1
+    assert linked_list.tail is not None
+    assert linked_list.tail.data == 1
+
+    linked_list.pop_front()
+    assert len(linked_list) == 0
+    assert linked_list.__repr__() == 'None'
+
+    assert linked_list.head is None
+    assert linked_list.tail is None
+
+
+def test_pop_front() -> None:
+    linked_list = LinkedList(data=[1, 2, 3])
+    assert len(linked_list) == 3
+    assert linked_list.__repr__() == '1 -> 2 -> 3 -> None'
+
+    assert linked_list.head is not None
+    assert linked_list.head.data == 1
+    assert linked_list.tail is not None
+    assert linked_list.tail.data == 3
+
+    linked_list.pop_front()
+    assert len(linked_list) == 2
+    assert linked_list.__repr__() == '2 -> 3 -> None'
+
+    assert linked_list.head is not None
+    assert linked_list.head.data == 2
+    assert linked_list.tail is not None
+    assert linked_list.tail.data == 3
