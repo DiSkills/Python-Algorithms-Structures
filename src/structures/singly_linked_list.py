@@ -29,12 +29,12 @@ class LinkedList:
         self._add_start_data(data=data)
 
     @property
-    def head(self) -> Node | None:
-        return self._head
+    def head(self) -> int | None:
+        return None if self._head is None else self._head.data
 
     @property
-    def tail(self) -> Node | None:
-        return self._tail
+    def tail(self) -> int | None:
+        return None if self._tail is None else self._tail.data
 
     def __len__(self) -> int:
         return self._length
