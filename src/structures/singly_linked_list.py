@@ -24,7 +24,7 @@ class LinkedList:
             return
 
         for item in data:
-            self.append(item)
+            self.push_back(item)
 
     def __init__(self, *, data: list[int] | None = None) -> None:
         self._head: Node | None = None
@@ -65,7 +65,7 @@ class LinkedList:
             self._head = node
         self._length += 1
 
-    def append(self, data: int) -> None:
+    def push_back(self, data: int) -> None:
         node = Node(data=data)
         if self._head is None:
             self._head = node
