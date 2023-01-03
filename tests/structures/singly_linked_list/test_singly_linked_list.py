@@ -19,10 +19,10 @@ def test_iter() -> None:
     assert list(linked_list) == []
 
     linked_list.push_back(1)
-    assert list(linked_list) == [Node(data=1)]
+    assert [node.data for node in linked_list] == [1]
 
     linked_list.push_back(2)
-    assert list(linked_list) == [Node(data=1), Node(data=2)]
+    assert [node.data for node in linked_list] == [1, 2]
 
 
 def test_push_back() -> None:

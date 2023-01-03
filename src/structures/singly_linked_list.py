@@ -9,11 +9,6 @@ class Node:
     def __repr__(self) -> str:
         return str(self.data)
 
-    def __eq__(self, other: object) -> bool:
-        if not isinstance(other, Node):
-            return False
-        return self.data == other.data
-
     def __str__(self) -> str:
         return str(self.data)
 
@@ -75,7 +70,7 @@ class LinkedList:
     def pop_front(self) -> None:
         if self._head is None:
             raise IndexError('SinglyLinkedList is empty')
-        if self._head.next is None:
+        elif self._head == self._tail:
             self._tail = None
         self._head = self._head.next
         self._length -= 1
