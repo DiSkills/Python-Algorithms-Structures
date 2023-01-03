@@ -1,7 +1,7 @@
 from src.structures.singly_linked_list import Node, LinkedList
 
 
-def test_list_repr() -> None:
+def test_repr() -> None:
     linked_list = LinkedList()
     assert linked_list.__repr__() == 'None'
 
@@ -12,7 +12,7 @@ def test_list_repr() -> None:
     assert linked_list.__repr__() == '1 -> 2 -> None'
 
 
-def test_list_iter() -> None:
+def test_iter() -> None:
     linked_list = LinkedList()
     assert list(linked_list) == []
 
@@ -23,12 +23,12 @@ def test_list_iter() -> None:
     assert list(linked_list) == [Node(data=1), Node(data=2)]
 
 
-def test_list_push_back() -> None:
+def test_push_back() -> None:
     linked_list = LinkedList()
     assert len(linked_list) == 0
     assert linked_list.__repr__() == 'None'
 
-    # Append first
+    # Push first
     linked_list.push_back(1)
     assert len(linked_list) == 1
     assert linked_list.__repr__() == '1 -> None'
@@ -39,7 +39,7 @@ def test_list_push_back() -> None:
     assert linked_list.tail is not None
     assert linked_list.tail.data == 1
 
-    # Append second
+    # Push second
     linked_list.push_back(2)
     assert len(linked_list) == 2
     assert linked_list.__repr__() == '1 -> 2 -> None'
@@ -47,8 +47,8 @@ def test_list_push_back() -> None:
     assert linked_list.head.data == 1
     assert linked_list.tail.data == 2
 
-    # Append left (zero)
-    linked_list.append_left(0)
+    # Push front (zero)
+    linked_list.push_front(0)
     assert len(linked_list) == 3
     assert linked_list.__repr__() == '0 -> 1 -> 2 -> None'
 
@@ -56,13 +56,13 @@ def test_list_push_back() -> None:
     assert linked_list.tail.data == 2
 
 
-def test_list_append_left() -> None:
+def test_push_front() -> None:
     linked_list = LinkedList()
     assert len(linked_list) == 0
     assert linked_list.__repr__() == 'None'
 
-    # Append first
-    linked_list.append_left(1)
+    # Push first
+    linked_list.push_front(1)
     assert len(linked_list) == 1
     assert linked_list.__repr__() == '1 -> None'
 
@@ -72,15 +72,15 @@ def test_list_append_left() -> None:
     assert linked_list.tail is not None
     assert linked_list.tail.data == 1
 
-    # Append zero
-    linked_list.append_left(0)
+    # Push zero
+    linked_list.push_front(0)
     assert len(linked_list) == 2
     assert linked_list.__repr__() == '0 -> 1 -> None'
 
     assert linked_list.head.data == 0
     assert linked_list.tail.data == 1
 
-    # Append right (second)
+    # Push back (second)
     linked_list.push_back(2)
     assert len(linked_list) == 3
     assert linked_list.__repr__() == '0 -> 1 -> 2 -> None'
@@ -89,7 +89,7 @@ def test_list_append_left() -> None:
     assert linked_list.tail.data == 2
 
 
-def test_create_list_with_empty_start_data() -> None:
+def test_create_with_empty_start_data() -> None:
     linked_list = LinkedList(data=[])
     assert len(linked_list) == 0
     assert linked_list.__repr__() == 'None'
@@ -98,7 +98,7 @@ def test_create_list_with_empty_start_data() -> None:
     assert linked_list.tail is None
 
 
-def test_create_list_with_many_start_data() -> None:
+def test_create_with_many_start_data() -> None:
     linked_list = LinkedList(data=[1, 2, 3])
     assert len(linked_list) == 3
     assert linked_list.__repr__() == '1 -> 2 -> 3 -> None'
@@ -109,7 +109,7 @@ def test_create_list_with_many_start_data() -> None:
     assert linked_list.tail.data == 3
 
 
-def test_create_list_with_one_item_in_start_data() -> None:
+def test_create_with_one_item_in_start_data() -> None:
     linked_list = LinkedList(data=[1])
     assert len(linked_list) == 1
     assert linked_list.__repr__() == '1 -> None'

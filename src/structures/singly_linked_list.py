@@ -55,7 +55,7 @@ class LinkedList:
             yield node
             node = node.next
 
-    def append_left(self, data: int) -> None:
+    def push_front(self, data: int) -> None:
         node = Node(data=data)
         if self._head is None:
             self._head = node
