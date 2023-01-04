@@ -94,3 +94,19 @@ class LinkedList:
             self._tail = None
         self._head = self._head.next
         self._length -= 1
+
+    def pop_back(self) -> None:
+        if self._tail is None:
+            raise IndexError('SinglyLinkedList is empty')
+        elif self._head == self._tail:
+            self._head = None
+
+        try:
+            node = self._get_node(index=-2)
+        except IndexError:
+            node = None
+
+        if node is not None:
+            node.next = None
+        self._tail = node
+        self._length -= 1
