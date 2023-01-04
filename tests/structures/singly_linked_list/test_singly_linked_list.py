@@ -25,6 +25,13 @@ def test_iter() -> None:
     assert [node.data for node in linked_list] == [1, 2]
 
 
+@pytest.mark.parametrize('index', range(-3, 3))
+def test_get_item(index) -> None:
+    data = [1, 2, 3]
+    linked_list = LinkedList(data=data)
+    assert linked_list[index] == data[index]
+
+
 def test_push_back() -> None:
     linked_list = LinkedList()
     assert len(linked_list) == 0
