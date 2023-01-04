@@ -182,3 +182,41 @@ def test_pop_front() -> None:
 
     assert linked_list.head == 2
     assert linked_list.tail == 3
+
+
+@pytest.mark.parametrize('index', range(-5, 5))
+def test_get_node_in_empty_list(index) -> None:
+    linked_list = LinkedList()
+
+    with pytest.raises(IndexError, match='SinglyLinkedList is empty'):
+        linked_list._get_node(index=index)
+
+
+@pytest.mark.parametrize(
+    'data, index',
+    (
+        ([1], -2),
+        ([1], 1),
+        ([1], 2),
+        ([1, 2], -3),
+        ([1, 2], 2),
+        ([1, 2], 3),
+    ),
+)
+def test_get_node_when_index_not_found(data, index) -> None:
+    linked_list = LinkedList(data=data)
+
+    with pytest.raises(
+        IndexError, match=f'Node not found with index: {index}',
+    ):
+        linked_list._get_node(index=index)
+
+
+@pytest.mark.parametrize('index', range(-5, 5))
+def test_get_node(index) -> None:
+    data = [1, 2, 3, 4, 5]
+    linked_list = LinkedList(data=data)
+
+    node = linked_list._get_node(index=index)
+    assert node is not None
+    assert node.data == data[index]

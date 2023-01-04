@@ -74,3 +74,19 @@ class LinkedList:
             self._tail = None
         self._head = self._head.next
         self._length -= 1
+
+    def _get_node(self, index: int) -> Node | None:
+        if self._head is None:
+            raise IndexError('SinglyLinkedList is empty')
+
+        length = len(self)
+        if not (-length <= index < length):
+            raise IndexError(f'Node not found with index: {index}')
+        index = (index + length) % length
+
+        i = 0
+        node: Node | None = self._head
+        while (node is not None) and (i < index):
+            node = node.next
+            i += 1
+        return node
